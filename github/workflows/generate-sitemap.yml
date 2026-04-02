@@ -2,8 +2,8 @@ name: Generate Sitemap
 
 on:
   push:
-    branches: [ main ]  # আপনার ডিফল্ট ব্রাঞ্চের নাম 'main' বা 'master' যা থাকে সেটি লিখুন
-  workflow_dispatch:    # ম্যানুয়ালি রান করার সুযোগ
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   sitemap_job:
@@ -13,14 +13,14 @@ jobs:
     - name: Checkout the repo
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # সাইটম্যাপের জন্য দরকারি তথ্য
+        fetch-depth: 0
 
     - name: Generate the sitemap
       id: sitemap
       uses: cicirello/generate-sitemap@v1
       with:
-        base-url-path: https://pathargata-digital-community-ltd.github.io/Website/  # আপনার সাইটের লিংক
-        drop-html-extension: true  # URL থেকে .html সরিয়ে দেবে
+        base-url-path: https://pathargata-digital-community-ltd.github.io/Website/
+        drop-html-extension: true
 
     - name: Commit and push the sitemap
       run: |
